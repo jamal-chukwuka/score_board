@@ -1,0 +1,30 @@
+    <div class="scoreboard">
+        <h2>Scoreboard</h2>
+
+        <div>
+            <form [formGroup]="scoreForm" (ngSubmit)="addScore()">
+              <input formControlName="user" placeholder="User Name" type="text" />
+              <input formControlName="score" placeholder="Score" type="number" />
+              <input formControlName="date" placeholder="Date" type="date" />
+              <button type="submit">Add Score</button>
+            </form>
+          </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Score</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor ="let entry of scoreEntries">
+                    <td>{{ entry.user }}</td>
+                    <td>{{ entry.score }}</td>
+                    <td>{{ entry.date | date }}</td>
+                    <td>{{ entry.locked ? 'Locked' : 'Open' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
